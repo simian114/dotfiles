@@ -25,6 +25,7 @@
 ;; disable line numbers for some modes
 (dolist (mode '(org-mode-hook
 		term-mode-hook
+		shell-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -56,12 +57,10 @@
 ;; meow
 (load-file "./meow.el")
 
-
-
 (use-package ivy
   :diminish
   :bind (
-	;; ("C-s" . swiper)
+	 ("C-s" . swiper)
          :map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)	
          ("C-l" . ivy-alt-done)
@@ -77,6 +76,17 @@
   :config
   (ivy-mode 1))
 
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . 'counsel-minibuffer-history)))
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
 ;; modeline
 (use-package doom-modeline
   :ensure t
@@ -85,3 +95,7 @@
 
 ;; magit
 (setq magit-section-initial-visibility-alist '((untracked . show)))
+
+;;
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
