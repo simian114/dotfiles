@@ -19,6 +19,7 @@
 (load-theme 'tango-dark)
 
 ;; show line numbers
+(column-number-mode)
 (global-display-line-numbers-mode 1)
 
 ;; Make ESC quit prompts
@@ -48,6 +49,7 @@
 
 ;; meow
 (load-file "./meow.el")
+
 
 
 (use-package ivy
