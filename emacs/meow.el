@@ -9,7 +9,7 @@
    '("j" . "H-j")
    '("k" . "H-k")
    ;; leader
-   '("f" . execute-eed-command)
+   '("f" . execute-extended-command)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
