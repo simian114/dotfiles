@@ -22,6 +22,12 @@
 (column-number-mode)
 (global-display-line-numbers-mode 1)
 
+;; disable line numbers for some modes
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
