@@ -19,7 +19,7 @@
 (load-theme 'tango-dark)
 
 ;; show line numbers
-(column-number-mode)
+
 (global-display-line-numbers-mode 1)
 
 ;; disable line numbers for some modes
@@ -56,6 +56,7 @@
 
 ;; meow
 (load-file "./meow.el")
+(load-file "./ui.el")
 
 (use-package ivy
   :diminish
@@ -99,3 +100,16 @@
 ;;
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; helpful
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-varibale)
+  ([remap describe-key] . helpful-key))
+  
