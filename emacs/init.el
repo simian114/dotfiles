@@ -21,6 +21,10 @@
 ;; show line numbers
 (global-display-line-numbers-mode 1)
 
+;; mark command
+(global-set-key (kbd "C-t") 'set-mark-command)
+(global-set-key (kbd "C-x t") 'transpose-chars)
+
 ;; disable line numbers for some modes
 (dolist (mode '(org-mode-hook
 		term-mode-hook
