@@ -19,7 +19,6 @@
 (load-theme 'tango-dark)
 
 ;; show line numbers
-
 (global-display-line-numbers-mode 1)
 
 ;; disable line numbers for some modes
@@ -54,9 +53,10 @@
 (use-package solo-jazz-theme)
 (use-package command-log-mode)
 
-;; meow
+;; load
 (load-file "./meow.el")
 (load-file "./ui.el")
+(load-file "./clipboard.el")
 
 (use-package ivy
   :diminish
