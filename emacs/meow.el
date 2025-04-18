@@ -11,11 +11,6 @@
    ;; leader
    '("f" . counsel-M-x)
    '("b" . counsel-ibuffer)
-   ;; leader with window move
-   '("w l" . windmove-right)
-   '("w h" . windmove-left)
-   '("w k" . windmove-up)
-   '("w j" . windmove-down)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
@@ -111,4 +106,3 @@
 (add-hook 'meow-insert-exit-hook 'switch-to-english-input)
 (add-hook 'meow-normal-enter-hook 'switch-to-english-input)
 (add-hook 'meow-motion-enter-hook 'switch-to-english-input)
-

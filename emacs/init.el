@@ -57,6 +57,8 @@
 (load-file "./meow.el")
 (load-file "./ui.el")
 (load-file "./clipboard.el")
+(load-file "./projectile.el")
+(load-file "./window-management.el")
 
 (use-package ivy
   :diminish

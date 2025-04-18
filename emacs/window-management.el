@@ -1,0 +1,10 @@
+(meow-leader-define-key
+   '("w l" . windmove-right)
+   '("w h" . windmove-left)
+   '("w k" . windmove-up)
+   '("w j" . windmove-down)
+   '("w L" . enlarge-window-horizontally)
+   '("w H" . shrink-window-horizontally)
+   '("w K" . enlarge-window)
+   '("w J" . shrink-window)
+ )
