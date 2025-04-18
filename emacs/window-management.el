@@ -53,6 +53,83 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
       (message "No window in that direction")
       (select-window current-win))))
 
+(defun my-split-window-right-find-file ()
+  "Split window vertically and open find-file in the new window."
+  (interactive)
+  (let ((current-win (selected-window)))
+    (split-window-right)
+    (other-window 1)
+    (call-interactively #'find-file)
+    (select-window current-win)))
+
+(defun my-split-window-right-select-mode ()
+  "Split window vertically and prompt to select a mode for the new window."
+  (interactive)
+  (let* ((current-win (selected-window))
+         ;; Define modes with display names and corresponding functions
+         (mode-options
+          '(("Eshell" . eshell)
+            ("Shell" . shell)
+            ("Dired" . dired-jump)
+            ("Term" . (lambda () (ansi-term "/bin/zsh")))
+            ("Ibuffer" . ibuffer)))
+         ;; Prompt for mode selection
+         (selected-mode
+          (completing-read "Select mode for new window: "
+                           (mapcar #'car mode-options)
+                           nil t))
+         ;; Find the function for the selected mode
+         (mode-fn (cdr (assoc selected-mode mode-options))))
+    (if mode-fn
+        (progn
+          (split-window-right)          ;; Create new window
+          (other-window 1)             ;; Move to new window
+          (funcall mode-fn)            ;; Start selected mode
+          (select-window current-win)) ;; Return focus to original
+      (message "Invalid mode selected"))))
+
+
+(defun my-split-window-find-file (direction)
+  "Split window in DIRECTION (below or right) and open find-file in the new window."
+  (interactive)
+  (let ((current-win (selected-window))
+        (split-fn (pcase direction
+                    ('below #'split-window-below)
+                    ('right #'split-window-right)
+                    (_ (error "Invalid direction: %s" direction)))))
+    (funcall split-fn)
+    (other-window 1)
+    (call-interactively #'find-file)
+    (select-window current-win)))
+
+(defun my-split-window-select-mode (direction)
+  "Split window in DIRECTION (below or right) and prompt to select a mode for the new window."
+  (interactive)
+  (let* ((current-win (selected-window))
+         (mode-options
+          '(("Eshell" . eshell)
+            ("Shell" . shell)
+            ("Dired" . dired-jump)
+            ("Term" . (lambda () (ansi-term "/bin/bash")))
+            ("Ibuffer" . ibuffer)))
+         (selected-mode
+          (completing-read "Select mode for new window: "
+                           (mapcar #'car mode-options)
+                           nil t))
+         (mode-fn (cdr (assoc selected-mode mode-options)))
+         (split-fn (pcase direction
+                     ('below #'split-window-below)
+                     ('right #'split-window-right)
+                     (_ (error "Invalid direction: %s" direction)))))
+    (if mode-fn
+        (progn
+          (funcall split-fn)
+          (other-window 1)
+          (funcall mode-fn)
+          (select-window current-win))
+      (message "Invalid mode selected"))))
+
+
 ;; Update Meow Leader keymap to include hydra
 (meow-leader-define-key
  '("w L" . enlarge-window-horizontally)  ;; Keep for single press
@@ -60,4 +137,12 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
  '("w K" . enlarge-window)
  '("w J" . shrink-window)
  '("w r" . hydra-window-resize/body)  ;; SPC w r to start hydra
- '("w s" . my-swap-window-buffers-with-direction)) ;; Swap with selected window
+ '("w s" . my-swap-window-buffers-with-direction) ;; Swap with selected window
+;;  '("w f" . my-split-window-right-find-file) ;; Vertical split + find-file
+ ;;
+ '("w m" . my-split-window-right-select-mode) ;; Vertical split + mode select
+ '("w f" . (lambda () (interactive) (my-split-window-find-file 'right))) ;; Horizontal split + find-file
+ '("w F" . (lambda () (interactive) (my-split-window-find-file 'below))) ;; Vertical split + find-file
+ '("w m" . (lambda () (interactive) (my-split-window-select-mode 'right))) ;; Vertical split + mode select
+ '("w M" . (lambda () (interactive) (my-split-window-select-mode 'below)))) ;; Horizontal split + mode select
+
