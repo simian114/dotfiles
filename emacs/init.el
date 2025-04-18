@@ -63,8 +63,8 @@
 (load-file "./clipboard.el")
 (load-file "./projectile.el")
 (load-file "./window-management.el")
-(load-file "./magit.el")
 (load-file "./buffer-management.el")
+(load-file "./magit.el")
 
 (use-package ivy
   :diminish
