@@ -10,6 +10,7 @@
    '("k" . "H-k")
    ;; leader
    '("f" . counsel-M-x)
+   '("b" . counsel-ibuffer)
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
