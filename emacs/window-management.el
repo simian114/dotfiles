@@ -64,7 +64,6 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
     (funcall split-fn)
     (other-window 1)
     (call-interactively #'find-file)))
-;;    (select-window current-win)))
 
 (defun my-split-window-select-mode (direction)
   "Split window in DIRECTION (below or right) and prompt to select a mode for the new window."
@@ -90,9 +89,7 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
           (funcall split-fn)
           (other-window 1)
           (funcall mode-fn))
-;;          (select-window current-win))
       (message "Invalid mode selected"))))
-
 
 ;; Update Meow Leader keymap to include hydra
 (meow-leader-define-key
