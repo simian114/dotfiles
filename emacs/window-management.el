@@ -53,42 +53,6 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
       (message "No window in that direction")
       (select-window current-win))))
 
-(defun my-split-window-right-find-file ()
-  "Split window vertically and open find-file in the new window."
-  (interactive)
-  (let ((current-win (selected-window)))
-    (split-window-right)
-    (other-window 1)
-    (call-interactively #'find-file)
-    (select-window current-win)))
-
-(defun my-split-window-right-select-mode ()
-  "Split window vertically and prompt to select a mode for the new window."
-  (interactive)
-  (let* ((current-win (selected-window))
-         ;; Define modes with display names and corresponding functions
-         (mode-options
-          '(("Eshell" . eshell)
-            ("Shell" . shell)
-            ("Dired" . dired-jump)
-            ("Term" . (lambda () (ansi-term "/bin/zsh")))
-            ("Ibuffer" . ibuffer)))
-         ;; Prompt for mode selection
-         (selected-mode
-          (completing-read "Select mode for new window: "
-                           (mapcar #'car mode-options)
-                           nil t))
-         ;; Find the function for the selected mode
-         (mode-fn (cdr (assoc selected-mode mode-options))))
-    (if mode-fn
-        (progn
-          (split-window-right)          ;; Create new window
-          (other-window 1)             ;; Move to new window
-          (funcall mode-fn)            ;; Start selected mode
-          (select-window current-win)) ;; Return focus to original
-      (message "Invalid mode selected"))))
-
-
 (defun my-split-window-find-file (direction)
   "Split window in DIRECTION (below or right) and open find-file in the new window."
   (interactive)
@@ -99,8 +63,8 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
                     (_ (error "Invalid direction: %s" direction)))))
     (funcall split-fn)
     (other-window 1)
-    (call-interactively #'find-file)
-    (select-window current-win)))
+    (call-interactively #'find-file)))
+;;    (select-window current-win)))
 
 (defun my-split-window-select-mode (direction)
   "Split window in DIRECTION (below or right) and prompt to select a mode for the new window."
@@ -110,7 +74,7 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
           '(("Eshell" . eshell)
             ("Shell" . shell)
             ("Dired" . dired-jump)
-            ("Term" . (lambda () (ansi-term "/bin/bash")))
+            ("Term" . (lambda () (ansi-term "/bin/zsh")))
             ("Ibuffer" . ibuffer)))
          (selected-mode
           (completing-read "Select mode for new window: "
@@ -125,8 +89,8 @@ Window Resize: _j_ shrink height | _k_ enlarge height | _k_ shrink width | _l_ e
         (progn
           (funcall split-fn)
           (other-window 1)
-          (funcall mode-fn)
-          (select-window current-win))
+          (funcall mode-fn))
+;;          (select-window current-win))
       (message "Invalid mode selected"))))
 
 
