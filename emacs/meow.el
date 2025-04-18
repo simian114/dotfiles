@@ -91,3 +91,18 @@
   :config
   (meow-setup)
   (meow-global-mode 1))
+
+
+(defvar im-en-cmd (cond ((eq system-type 'darwin) "im-select com.apple.keylayout.ABC")
+                        (t "fcitx-remote -s fcitx-keyboard-kr-kr104"))
+  "Command for change input method to english")
+
+(defun switch-to-english-input ()
+  "Switch to English input method when changing Meow modes."
+  (shell-command im-en-cmd))
+
+;; Add to hooks for when exiting insert mode or entering normal/motion mode
+(add-hook 'meow-insert-exit-hook 'switch-to-english-input)
+(add-hook 'meow-normal-enter-hook 'switch-to-english-input)
+(add-hook 'meow-motion-enter-hook 'switch-to-english-input)
+
