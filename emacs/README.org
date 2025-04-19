@@ -1,0 +1,81 @@
+* sanam's emacs
+
+This repository contains my personal Emacs configuration, focusing on modal editing with meow and a clean, efficient workflow.
+
+** Features
+- Modal editing using meow (vim-like keybindings with Emacs characteristics)
+- Vim-surround style functionality through custom implementation
+- Clean, minimalist UI with doom-modeline
+- Efficient window and buffer management
+- Git integration with Magit
+- Org-mode configuration
+- Project management with projectile
+- Ivy/Counsel for completion
+
+** Structure
+- =sanam-init.el= - Main configuration file that loads all other modules
+- =sanam-meow.el= - Modal editing configuration with meow
+- =sanam-ui.el= - UI and theme settings
+- =sanam-clipboard.el= - Clipboard functionality
+- =sanam-projectile.el= - Project management configuration
+- =sanam-window-management.el= - Window management functions
+- =sanam-buffer-management.el= - Buffer navigation and organization
+- =sanam-magit.el= - Git integration with Magit
+- =sanam-org-mode.el= - Org-mode settings and functionality
+- =sanam-surround.el= - Vim-surround style functionality for meow
+
+The configuration uses a modular approach with a helper function to load configuration files regardless of where the repository is cloned, making it portable across different systems.
+
+** Key Bindings
+*** Modal Editing (meow)
+Default meow key bindings with some customizations
+- Normal mode accessed by ESC
+
+*** Surround Functions
+Available through two methods:
+1. Leader key: =SPC y s=, =SPC y c=, =SPC y C=, =SPC y d=, =SPC y D=
+2. Normal mode direct keys: =S=, =C=, =M-c=, =D=, =M-d=
+
+** Prerequisites
+- Fonts
+  - JetBrains Mono - Primary coding font
+  - Fira Code Retina - Secondary coding font with ligatures
+  - Install these fonts before using this configuration for the best experience
+
+- im-select
+  - For automatic input mode change to English when exiting meow's insert mode
+  - Required for proper modal editing with non-English input methods
+
+** Installation
+1. Clone this repository to your =~/.emacs.d= or =~/dotfiles/emacs= directory
+2. Create symbolic links if necessary
+3. Start Emacs using one of these methods:
+   
+   a. Using the provided script:
+      #+begin_src shell
+      ./runemacs.sh
+      #+end_src
+      
+   b. Directly from command line:
+      #+begin_src shell
+      emacs -Q -l /path/to/sanam-init.el
+      #+end_src
+      
+   c. By setting up your regular Emacs to load this configuration:
+      #+begin_src emacs-lisp
+      ;; Add to your default .emacs or init.el
+      (load-file "/path/to/sanam-init.el")
+      #+end_src
+
+** Troubleshooting
+- If icons appear as boxes or question marks, install nerd-fonts using the ~nerd-icons-install-fonts~ command
+- If fonts are not rendering correctly, verify that both JetBrains Mono and Fira Code Retina are properly installed on your system
+- For macOS users: Install fonts via Font Book application
+- For Linux users: Place fonts in ~/.fonts directory and run fc-cache -fv
+
+*** Forge Issues
+- Forge should only be installed after Git remote configuration is properly set up
+- If you encounter errors with Forge even after proper Git remote configuration:
+  1. Remove the magit package from your Emacs package cache (~/.emacs.d/elpa/)
+  2. Restart Emacs to force a clean reinstallation
+  3. Verify your Git authentication is working correctly (SSH keys or credentials)
