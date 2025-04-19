@@ -57,16 +57,25 @@
 (use-package solo-jazz-theme)
 (use-package command-log-mode)
 
-;; load
-(load-file "./meow.el")
-(load-file "./ui.el")
-(load-file "./clipboard.el")
-(load-file "./projectile.el")
-(load-file "./window-management.el")
-(load-file "./buffer-management.el")
-(load-file "./magit.el")
-(load-file "./org-mode.el")
-(load-file "./surround.el")
+;; Define configuration directory path
+(defvar sanam-config-dir (file-name-directory load-file-name)
+  "Directory containing sanam's Emacs configuration files.")
+
+;; Helper function to load configuration files
+(defun sanam-load-config (file)
+  "Load configuration FILE from `sanam-config-dir`."
+  (load-file (expand-file-name (concat "sanam-" file ".el") sanam-config-dir)))
+
+;; Load configuration modules
+(sanam-load-config "meow")
+(sanam-load-config "ui")
+(sanam-load-config "clipboard")
+(sanam-load-config "projectile")
+(sanam-load-config "window-management")
+(sanam-load-config "buffer-management")
+(sanam-load-config "magit")
+(sanam-load-config "org-mode")
+(sanam-load-config "surround")
 
 (use-package ivy
   :diminish

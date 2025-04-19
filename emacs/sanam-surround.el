@@ -1,12 +1,13 @@
-;; meow를 위한 vim-surround 스타일 기능 구현 (meow-leader-define-key 사용)
+;; Vim-surround style functionality for meow
+;; Provides key bindings for surrounding text with pairs of characters
 
-;; meow 패키지 명시적 로드
+;; Explicitly load meow package
 (require 'meow)
 (eval-when-compile
   (require 'meow))
 
 (defun my-meow-surround-region (char)
-  "선택된 영역 또는 단어를 CHAR로 감싸기."
+  "Surround the selected region or word with CHAR."
   (interactive "cSurround with: ")
   (message "my-meow-surround-region called with char: %s" char)
   (let ((surround (string char))
@@ -53,7 +54,7 @@
       (cons open-pos close-pos))))
 
 (defun my-meow-change-surround (old-open old-close new-open new-close)
-  "주변 문자 OLD-OPEN, OLD-CLOSE를 NEW-OPEN, NEW-CLOSE로 변경."
+  "Change surrounding characters OLD-OPEN, OLD-CLOSE to NEW-OPEN, NEW-CLOSE."
   (interactive "cOld opening char: \ncOld closing char: \ncNew opening char: \ncNew closing char: ")
   (message "my-meow-change-surround: %c%c → %c%c" old-open old-close new-open new-close)
   (let ((old-open-str (string old-open))
@@ -75,7 +76,7 @@
           (insert new-open-str))))))
 
 (defun my-meow-delete-surround (open close)
-  "주변 문자 OPEN, CLOSE 제거."
+  "Delete surrounding characters OPEN and CLOSE."
   (interactive "cOpening char to delete: \ncClosing char to delete: ")
   (message "my-meow-delete-surround: %c%c" open close)
   (let ((open-str (string open))
@@ -94,12 +95,12 @@
 
 ;; For convenience, provide single-character versions for matching pairs
 (defun my-meow-change-surround-single (old-char new-char)
-  "주변 동일한 문자 OLD-CHAR를 NEW-CHAR로 변경 (짝이 같은 경우)."
+  "Change surrounding characters when OLD-CHAR is used for both opening and closing."
   (interactive "cOld surround: \ncNew surround: ")
   (my-meow-change-surround old-char old-char new-char new-char))
 
 (defun my-meow-delete-surround-single (char)
-  "주변 동일한 문자 CHAR 제거 (짝이 같은 경우)."
+  "Delete surrounding characters when CHAR is used for both opening and closing."
   (interactive "cSurround to delete: ")
   (my-meow-delete-surround char char))
 
@@ -118,19 +119,19 @@
     (_ char)))  ; Default to same char for quotes etc.
 
 (defun my-meow-change-surround-matched (old-char new-char)
-  "주변 짝이 맞는 문자 OLD-CHAR를 NEW-CHAR로 변경."
+  "Change matched surrounding pair characters where OLD-CHAR is the opening character."
   (interactive "cOld opening char: \ncNew opening char: ")
   (let ((old-close (my-get-matching-pair old-char))
         (new-close (my-get-matching-pair new-char)))
     (my-meow-change-surround old-char old-close new-char new-close)))
 
 (defun my-meow-delete-surround-matched (char)
-  "주변 짝이 맞는 문자 CHAR 제거."
+  "Delete matched surrounding pair characters where CHAR is the opening character."
   (interactive "cOpening char to delete: ")
   (let ((close-char (my-get-matching-pair char)))
     (my-meow-delete-surround char close-char)))
 
-;; meow-leader-define-key로 <leader> y 프리픽스 설정
+;; Set up leader key bindings with prefix 'y' for surround operations
 (meow-leader-define-key
  '("y s" . my-meow-surround-region)
  '("y c" . my-meow-change-surround-single)
@@ -138,7 +139,7 @@
  '("y d" . my-meow-delete-surround-single)
  '("y D" . my-meow-delete-surround-matched))
 
-;; Beacon 모드에서 SPC y s 별도 바인딩
+;; Separate binding for surround in beacon mode
 (define-key meow-beacon-state-keymap (kbd "SPC y s") 'my-meow-surround-region)
 
 ;; Add surround functions to normal mode keybindings
