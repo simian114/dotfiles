@@ -11,7 +11,8 @@ This repository contains my personal Emacs configuration, focusing on modal edit
 - Org-mode configuration
 - Project management with projectile
 - Ivy/Counsel for completion
-
+- Emacs Application Framework (EAF) for modern applications
+   
 ** Structure
 - =sanam-init.el= - Main configuration file that loads all other modules
 - =sanam-meow.el= - Modal editing configuration with meow
@@ -23,6 +24,7 @@ This repository contains my personal Emacs configuration, focusing on modal edit
 - =sanam-magit.el= - Git integration with Magit
 - =sanam-org-mode.el= - Org-mode settings and functionality
 - =sanam-surround.el= - Vim-surround style functionality for meow
+- =sanam-eaf.el= - Emacs Application Framework configuration
 
 The configuration uses a modular approach with a helper function to load configuration files regardless of where the repository is cloned, making it portable across different systems.
 
@@ -45,6 +47,10 @@ Available through two methods:
 - im-select
   - For automatic input mode change to English when exiting meow's insert mode
   - Required for proper modal editing with non-English input methods
+  
+- Emacs Application Framework
+  - [[https://github.com/emacs-eaf/emacs-application-framework?tab=readme-ov-file#install][Install guide]]
+   
 
 ** Installation
 1. Clone this repository to your =~/.emacs.d= or =~/dotfiles/emacs= directory
@@ -89,3 +95,4 @@ Available through two methods:
   1. Remove the magit package from your Emacs package cache (~/.emacs.d/elpa/)
   2. Restart Emacs to force a clean reinstallation
   3. Verify your Git authentication is working correctly (SSH keys or credentials)
+

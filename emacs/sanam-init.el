@@ -76,6 +76,7 @@
 (sanam-load-config "magit")
 (sanam-load-config "org-mode")
 (sanam-load-config "surround")
+(sanam-load-config "eaf")
 
 (use-package ivy
   :diminish
