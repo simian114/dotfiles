@@ -65,6 +65,7 @@
 (load-file "./window-management.el")
 (load-file "./buffer-management.el")
 (load-file "./magit.el")
+(load-file "./org-mode.el")
 
 (use-package ivy
   :diminish
