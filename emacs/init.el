@@ -66,6 +66,7 @@
 (load-file "./buffer-management.el")
 (load-file "./magit.el")
 (load-file "./org-mode.el")
+(load-file "./surround.el")
 
 (use-package ivy
   :diminish
