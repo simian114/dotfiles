@@ -34,7 +34,8 @@
 (use-package org
   :hook (org-mode . efs/org-mode-setup)
   :config
-  (setq org-ellipsis " ▾")
+  (setq org-ellipsis " ▾"
+	org-hide-emphasis-markers t)
   (efs/org-font-setup))
 
 (use-package org-bullets

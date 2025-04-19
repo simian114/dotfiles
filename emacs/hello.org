@@ -1,0 +1,55 @@
+
+
+* First Heading
+Hello world
+- hello *worrld*
+- ~wow?~
+- *asdfasd*
+- /asdf/
+- asdf
+
+** second heading
+why not indent?
+hello world!
+
+checkbox
+- [X] this is checkbox?
+- [X] why
+
+1. hello world
+2. assdfasdfdfas world
+3. haha hoho
+4. dd
+
+zzz
+
+- [ ] checkbox
+
+- [ ]
+
+#+begin_src emacs-lisp
+(defun my-lisp()
+  (message "hello!")
+
+#+end_src
+TODO  
+
+
+
+** asdfasdf
+
+
+* TODOㅣㅗㅣㅣㅗㅚㅚㅗ먼ㅇ라ㅏㅚ몬ㅇ뢰ㅗㅏ만ㅇㄹㅁㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹFㅗㅗㅗㅗㅏ만ㅇㄹ
+
+_ asdf
+
+asdf
+
+** TODO asdfasdf
+
+*** asdfasdf
+**** fourth heading
+***** fifth heading
+bold *text?*
+
+

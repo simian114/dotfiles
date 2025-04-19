@@ -140,3 +140,11 @@
 
 ;; Beacon 모드에서 SPC y s 별도 바인딩
 (define-key meow-beacon-state-keymap (kbd "SPC y s") 'my-meow-surround-region)
+
+;; Add surround functions to normal mode keybindings
+(meow-normal-define-key
+ '("S" . my-meow-surround-region)      ;; Surround region/word with character
+ '("C" . my-meow-change-surround-single) ;; Change surrounding characters (same open/close)
+ '("M-c" . my-meow-change-surround-matched) ;; Change surrounding characters (matched pairs)
+ '("D" . my-meow-delete-surround-single) ;; Delete surrounding characters (same open/close)
+ '("M-d" . my-meow-delete-surround-matched)) ;; Delete surrounding characters (matched pairs)
