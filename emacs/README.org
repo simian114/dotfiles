@@ -48,20 +48,30 @@ Available through two methods:
 
 ** Installation
 1. Clone this repository to your =~/.emacs.d= or =~/dotfiles/emacs= directory
-2. Create symbolic links if necessary
+2. Run the setup script to make =runemacs= available system-wide:
+   #+begin_src shell
+   cd ~/dotfiles/emacs
+   ./setup.sh
+   #+end_src
+   
 3. Start Emacs using one of these methods:
    
-   a. Using the provided script:
+   a. From anywhere in your terminal:
+      #+begin_src shell
+      runemacs
+      #+end_src
+      
+   b. Using the local script:
       #+begin_src shell
       ./runemacs.sh
       #+end_src
       
-   b. Directly from command line:
+   c. Directly from command line:
       #+begin_src shell
       emacs -Q -l /path/to/sanam-init.el
       #+end_src
       
-   c. By setting up your regular Emacs to load this configuration:
+   d. By setting up your regular Emacs to load this configuration:
       #+begin_src emacs-lisp
       ;; Add to your default .emacs or init.el
       (load-file "/path/to/sanam-init.el")
