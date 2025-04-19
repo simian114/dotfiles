@@ -80,6 +80,7 @@
 (sanam-load-config "eglot")
 (sanam-load-config "pyenv")
 (sanam-load-config "dashboard") ; Load dashboard first so it appears on startup
+(sanam-load-config "dired")
 
 (use-package ivy
   :diminish

@@ -59,7 +59,12 @@ Available through two methods:
   - Python/Django: ~npm install -g pyright~
   - JavaScript/TypeScript: ~npm install -g typescript typescript-language-server~
   - HTML/CSS: ~npm install -g vscode-langservers-extracted~
-   
+
+- Icons
+  - all icons
+    - ~M-x all-the-icons-install-fonts~
+  - nerd icons
+    - nerd-icons-install-fonts
 
 ** Installation
 1. Clone this repository to your =~/.emacs.d= or =~/dotfiles/emacs= directory
