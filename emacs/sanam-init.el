@@ -76,6 +76,7 @@
 (sanam-load-config "org-mode")
 (sanam-load-config "surround")
 (sanam-load-config "eaf")
+(sanam-load-config "project")
 
 (use-package ivy
   :diminish
