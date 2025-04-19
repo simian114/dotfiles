@@ -77,6 +77,9 @@
 (sanam-load-config "surround")
 (sanam-load-config "eaf")
 (sanam-load-config "project")
+(sanam-load-config "eglot")
+(sanam-load-config "pyenv")
+(sanam-load-config "dashboard") ; Load dashboard first so it appears on startup
 
 (use-package ivy
   :diminish
