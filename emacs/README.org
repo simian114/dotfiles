@@ -12,18 +12,23 @@ This repository contains my personal Emacs configuration, focusing on modal edit
 - Org-mode configuration
 - Ivy/Counsel for completion
 - Emacs Application Framework (EAF) for modern applications
+- Project management with project.el (built-in)
+- LSP support with eglot for development
    
 ** Structure
 - =sanam-init.el= - Main configuration file that loads all other modules
 - =sanam-meow.el= - Modal editing configuration with meow
 - =sanam-ui.el= - UI and theme settings
 - =sanam-clipboard.el= - Clipboard functionality
-- =sanam- =sanam-window-management.el= - Window management functions
+- =sanam-window-management.el= - Window management functions
 - =sanam-buffer-management.el= - Buffer navigation and organization
 - =sanam-magit.el= - Git integration with Magit
 - =sanam-org-mode.el= - Org-mode settings and functionality
 - =sanam-surround.el= - Vim-surround style functionality for meow
 - =sanam-eaf.el= - Emacs Application Framework configuration
+- =sanam-project.el= - Project management with built-in project.el
+- =sanam-eglot.el= - LSP integration with eglot
+- =sanam-pyenv.el= - Python virtualenv management for Django projects
 
 The configuration uses a modular approach with a helper function to load configuration files regardless of where the repository is cloned, making it portable across different systems.
 
@@ -49,6 +54,11 @@ Available through two methods:
   
 - Emacs Application Framework
   - [[https://github.com/emacs-eaf/emacs-application-framework?tab=readme-ov-file#install][Install guide]]
+
+- Language Servers
+  - Python/Django: ~npm install -g pyright~
+  - JavaScript/TypeScript: ~npm install -g typescript typescript-language-server~
+  - HTML/CSS: ~npm install -g vscode-langservers-extracted~
    
 
 ** Installation
