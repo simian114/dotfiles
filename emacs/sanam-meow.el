@@ -1,8 +1,8 @@
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
-   '("j" . meow-next)
-   '("k" . meow-prev)
+   ;;'("j" . meow-next)
+   ;;'("k" . meow-prev)
    '("<escape>" . ignore))
   (meow-leader-define-key
    ;; SPC j/k will run the original command in MOTION state.
@@ -94,7 +94,7 @@
 
 
 (defvar im-en-cmd (cond ((eq system-type 'darwin) "im-select com.apple.keylayout.ABC")
-                        (t "fcitx-remote -s fcitx-keyboard-kr-kr104"))
+                        (t ""))
   "Command for change input method to english")
 
 (defun switch-to-english-input ()

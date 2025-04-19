@@ -4,5 +4,6 @@
  '("b p" . previous-buffer)
  '("b n" . next-buffer)
  '("b d" . kill-current-buffer)
+ '("b k" . kill-current-buffer)
  )
  
