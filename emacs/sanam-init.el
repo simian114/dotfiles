@@ -70,7 +70,6 @@
 (sanam-load-config "meow")
 (sanam-load-config "ui")
 (sanam-load-config "clipboard")
-(sanam-load-config "projectile")
 (sanam-load-config "window-management")
 (sanam-load-config "buffer-management")
 (sanam-load-config "magit")

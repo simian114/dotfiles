@@ -1,5 +1,6 @@
 * sanam's emacs
 
+:work:
 This repository contains my personal Emacs configuration, focusing on modal editing with meow and a clean, efficient workflow.
 
 ** Features
@@ -9,7 +10,6 @@ This repository contains my personal Emacs configuration, focusing on modal edit
 - Efficient window and buffer management
 - Git integration with Magit
 - Org-mode configuration
-- Project management with projectile
 - Ivy/Counsel for completion
 - Emacs Application Framework (EAF) for modern applications
    
@@ -18,8 +18,7 @@ This repository contains my personal Emacs configuration, focusing on modal edit
 - =sanam-meow.el= - Modal editing configuration with meow
 - =sanam-ui.el= - UI and theme settings
 - =sanam-clipboard.el= - Clipboard functionality
-- =sanam-projectile.el= - Project management configuration
-- =sanam-window-management.el= - Window management functions
+- =sanam- =sanam-window-management.el= - Window management functions
 - =sanam-buffer-management.el= - Buffer navigation and organization
 - =sanam-magit.el= - Git integration with Magit
 - =sanam-org-mode.el= - Org-mode settings and functionality
